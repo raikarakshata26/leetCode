@@ -1,0 +1,35 @@
+#Java - 73ms
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        int sumindices[] = new int[2];
+        for(int i=0; i<nums.length-1;i++){
+            for(int j=i+1;j<nums.length;j++){
+              if(nums[i]+ nums[j]==target){
+                   sumindices[0]=i;
+                   sumindices[1]=j;
+                   return sumindices;
+                }
+            }
+        }
+        return sumindices;
+    }
+}
+
+#Java HashMap
+class Solution {
+    public int[] twoSum(int[] nums, int target) {
+        HashMap<Integer,Integer> indexMap= new HashMap<Integer,Integer>();
+        for(int i=0; i<nums.length;i++){
+            Integer remaining = target - nums[i];
+            if(indexMap.containsKey(remaining)){
+                int[] returnMap = {indexMap.get(remaining) ,i };
+                return returnMap;
+            }
+            indexMap.put(nums[i],i);
+        }
+        return null;
+    }
+}
+
+
+
